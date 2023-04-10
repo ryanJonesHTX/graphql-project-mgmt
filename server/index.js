@@ -1,5 +1,6 @@
 const express = require('express')
 const colors = require('colors')
+const cors = require('cors')
 require('dotenv').config()
 const { createYoga } = require('graphql-yoga')
 const schema = require('./schema/schema')
@@ -10,6 +11,8 @@ const port = process.env.PORT || 3000
 const app = express()
 
 connectDB()
+
+app.use(cors())
 
 const yoga = createYoga({
   schema,
